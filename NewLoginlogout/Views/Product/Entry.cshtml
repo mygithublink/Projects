@@ -1,0 +1,53 @@
+﻿@model IEnumerable<NewLoginlogout.Models.Product>
+@{
+    ViewBag.Title = "Details Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Entry</title>
+</head
+<body>
+
+    @if (User.Identity.IsAuthenticated) { 
+     <b>Welcome- @User.Identity.Name.ToUpper();</b>
+    }
+
+   
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PRODUCTNAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PRODUCTCOMPANY)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRODUCTNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRODUCTCOMPANY)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.PRODUCTID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.PRODUCTID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.PRODUCTID })
+            </td>
+        </tr>
+    }
+
+    </table>
+        <p>
+        @Html.ActionLink("Create New", "Create")
+         </p>
+</body>
+</html>

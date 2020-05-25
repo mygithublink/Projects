@@ -1,0 +1,42 @@
+﻿@model NewLoginlogout.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Enter Product Details</legend>
+
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PRODUCTNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PRODUCTNAME)
+            @Html.ValidationMessageFor(model => model.PRODUCTNAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PRODUCTCOMPANY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PRODUCTCOMPANY)
+            @Html.ValidationMessageFor(model => model.PRODUCTCOMPANY)
+        </div>
+
+         <p><input type="submit" value="Create" /></p>
+            
+        
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Entry")
+</div>
+
